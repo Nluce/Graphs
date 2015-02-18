@@ -4,12 +4,6 @@
 #include "GraphNode.h"
 
 
-struct Edge
-{
-	GraphNode*		start;
-	GraphNode*		end;
 
-	float			cost;
-};
 
 #endif //_GRAPH_H_
