@@ -1,15 +1,15 @@
-#ifndef _GRAPH_H_
-#define _GRAPH_H_
+#pragma once
 #include <string>
 #include "GraphNode.h"
+#include "Edge.h"
+#include <vector>
 
 class GraphNode
 {
 public:
-	Graphnode(int num);
+	GraphNode(int num);
 	int nodeNumber;
 
 	typedef std::vector<Edge> EdgeList;
 	EdgeList edges;
-
 };

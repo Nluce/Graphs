@@ -1,4 +1,7 @@
 #pragma once
+
+class GraphNode;
+
 class Edge
 {
 public:

@@ -1,9 +1,10 @@
-#ifndef _GRAPH_H_
-#define _GRAPH_H_
-#include <string>
-#include "GraphNode.h"
 
 
 
+int main(int argc, char ** argv)
+{
 
-#endif //_GRAPH_H_
+	// code goes here
+
+	return 0;
+}
