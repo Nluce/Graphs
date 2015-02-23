@@ -18,16 +18,24 @@ private:
 	{
 		for (int i = 0; i < nodes.size(); i++)
 		{
-			
 			GraphNode * node = nodes[i];
+
+
+
+
 			for (int j = 0; j < node->edges.size(); j++)
 			{
 				Edge edge = node->edges[j];
 				if (edge.end == node)
 				{
-					node->edges.
+					// this removes element j from the vector...
+					node->edges.erase(node->edges.begin() + j);
+
+					// backup one step, because we deleted one.
+					j--;  
 				}
 			}
+
 		}
 	}
 
