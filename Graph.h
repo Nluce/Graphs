@@ -10,6 +10,7 @@ public:
 private:
 	NodeList nodes;
 
+public:
 	void AddNode(GraphNode* node)
 	{
 		nodes.push_back(node);
