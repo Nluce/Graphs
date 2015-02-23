@@ -11,4 +11,10 @@ public:
 	int nodeNumber;
 	typedef std::vector<Edge> EdgeList;
 	EdgeList edges;
+
+
+	void AddEdge(const Edge & edge)
+	{
+		edges.push_back(edge);
+	}
 };

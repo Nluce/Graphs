@@ -2,14 +2,10 @@
 
 class GraphNode;
 
-class Edge
+struct Edge
 {
-public:
-	Edge();
-	~Edge();
 	GraphNode*		start;
 	GraphNode*		end;
-
 	float			cost;
 };
 

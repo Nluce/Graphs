@@ -14,14 +14,12 @@ private:
 	{
 		nodes.push_back(node);
 	}
+
 	void RemoveNode(GraphNode* nodeToRemove)
 	{
 		for (int i = 0; i < nodes.size(); i++)
 		{
 			GraphNode * node = nodes[i];
-
-
-
 
 			for (int j = 0; j < node->edges.size(); j++)
 			{
@@ -42,6 +40,20 @@ private:
 			}
 
 		}
+	}
+
+	void ConnectNodes(GraphNode* nodeA, GraphNode* nodeB, float cost)
+	{
+		// this initializes the Edge struct with the start, end and cost.
+		Edge edge = {
+			nodeA,
+			nodeB,
+			cost
+		};
+
+		// the edge must be added to both nodes
+		nodeA->AddEdge(edge);
+		nodeB->AddEdge(edge);
 	}
 
 };
