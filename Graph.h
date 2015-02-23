@@ -14,7 +14,7 @@ private:
 	{
 		nodes.push_back(node);
 	}
-	void RemoveNode(GraphNode* Node)
+	void RemoveNode(GraphNode* nodeToRemove)
 	{
 		for (int i = 0; i < nodes.size(); i++)
 		{
@@ -34,6 +34,11 @@ private:
 					// backup one step, because we deleted one.
 					j--;  
 				}
+			}
+			if (node == nodeToRemove)
+			{
+				nodes.erase(nodes.begin() + i);
+				i--;
 			}
 
 		}
