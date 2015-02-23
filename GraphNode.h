@@ -9,7 +9,6 @@ class GraphNode
 public:
 	GraphNode(int num);
 	int nodeNumber;
-
 	typedef std::vector<Edge> EdgeList;
 	EdgeList edges;
 };
