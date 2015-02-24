@@ -3,6 +3,9 @@
 #include "GraphNode.h"
 #include "Edge.h"
 #include <vector>
+#include <iostream>
+
+using namespace std;
 
 class GraphNode
 {
@@ -25,7 +28,14 @@ public:
 
 	void PrintNeighbors()
 	{
-		// TODO write this
-
+		cout << "Neighbors of node " << nodeNumber << ":" << endl;
+		for (Edge edge : edges){
+			if (edge.start == this){
+				cout << " node " << edge.end->nodeNumber << endl;
+			}
+			if (edge.end == this){
+				cout << " node " << edge.start->nodeNumber << endl;
+			}
+		}
 	}
 };
