@@ -14,11 +14,42 @@ int main(int argc, char ** argv)
 
 	Graph graph1 = Graph(graphSize);
 
-	for (int i = 0; i < graphSize; i++){
-		GraphNode * node = graph1.nodes[i];
-		node->PrintNeighbors();
-	}
 	
+	{
+		int i = rand() % graphSize;
+		GraphNode * node = graph1.nodes[i];
+		bool stop = false;
+		do {
+			cout << endl << "you are at this node... " << endl;
+
+			node->PrintNeighbors();
+
+			cout << "Which node do you want to go to? (enter -1 to stop) " << endl;
+			int newNodeNumber;
+			cin >> newNodeNumber;
+
+			if (newNodeNumber == -1){
+				stop = true;
+			} else
+			if (newNodeNumber < 0 || newNodeNumber >= graphSize)
+			{
+				cout << "bad node number" << endl;
+			}
+			else {
+				GraphNode * node2 = graph1.nodes[newNodeNumber];
+				if (node->IsNeighbor(node2)){
+					node = node2;
+				}
+				else {
+					cout << "nodes are not neighbors" << endl;
+				}
+			}
+
+
+
+		} while (!stop);
+
+	}
 
 
 	
