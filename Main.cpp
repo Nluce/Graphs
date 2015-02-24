@@ -1,5 +1,7 @@
 #include "Graph.h"
+#include <iostream>
 
+using namespace std;
 
 int main(int argc, char ** argv)
 {
@@ -30,6 +32,21 @@ int main(int argc, char ** argv)
 	graph1.ConnectNodes(&node1, &node3, 15.0f);
 
 	node1.PrintNeighbors();
+
+	if (node1.IsNeighbor(&node2)) {
+		cout << "Node 1 and node 2 are neighbors." << endl;
+	}
+	else {
+		cout << "Node 1 and node 2 are NOT neighbors." << endl;
+	}
+
+	if (node2.IsNeighbor(&node3)) {
+		cout << "Node 2 and node 3 are neighbors." << endl;
+	}
+	else {
+		cout << "Node 2 and node 3 are NOT neighbors." << endl;
+	}
+
 
 	
 

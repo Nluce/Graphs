@@ -38,4 +38,10 @@ public:
 			}
 		}
 	}
+
+
+	bool IsNeighbor(GraphNode * otherNode) {
+		return false;
+	}
+
 };
