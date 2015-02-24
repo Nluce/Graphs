@@ -5,9 +5,30 @@ class Graph
 	typedef std::vector<GraphNode*> NodeList;
 public:
 	Graph();
-	Graph(unsigned int a_uiNodeCount);
+	Graph(unsigned int a_uiNodeCount)
+	{
+		for (int i = 0; i < a_uiNodeCount; i++){
+			GraphNode* node = new GraphNode(i);
+			AddNode(node);
+		}
+
+		for (int i = 0; i < a_uiNodeCount; i++){
+			GraphNode* node1 = nodes[i];
+			for (int k = 0; k < 2; k++){
+				int j = rand() % a_uiNodeCount;
+				GraphNode* node2 = nodes[j];
+
+				if (node1 != node2) {
+					if (!node1->IsNeighbor(node2)){
+						ConnectNodes(node1, node2, 1.0f);
+					}
+				}
+
+			}
+		}
+	}
 	~Graph();
-private:
+public:
 	NodeList nodes;
 
 public:
