@@ -1,13 +1,23 @@
 #include "Graph.h"
 #include <iostream>
+#include <stdio.h>
 
 using namespace std;
-
+int graphSize;
+int currentNode;
 int main(int argc, char ** argv)
 {
 
 	// create a graph
 	Graph graph1;
+	cout << "Please enter the number of nodes in the graph" << endl;
+	cin >> graphSize;
+
+	for (int i = 1; i <= graphSize; i++)
+	{
+		GraphNode node[i] = GraphNode(i);
+		graph1.AddNode(&node[i]);
+	}
 
 	// create a node
 	GraphNode node1 = GraphNode(1);
@@ -33,19 +43,7 @@ int main(int argc, char ** argv)
 
 	node1.PrintNeighbors();
 
-	if (node1.IsNeighbor(&node2)) {
-		cout << "Node 1 and node 2 are neighbors." << endl;
-	}
-	else {
-		cout << "Node 1 and node 2 are NOT neighbors." << endl;
-	}
-
-	if (node2.IsNeighbor(&node3)) {
-		cout << "Node 2 and node 3 are neighbors." << endl;
-	}
-	else {
-		cout << "Node 2 and node 3 are NOT neighbors." << endl;
-	}
+	
 
 
 	

@@ -40,7 +40,22 @@ public:
 	}
 
 
-	bool IsNeighbor(GraphNode * otherNode) {
+	bool IsNeighbor(GraphNode * otherNode)
+	{
+		for (Edge edge : edges)
+		{
+			if (edge.start == otherNode)
+			{
+				return true;
+				break;
+			}
+			if (edge.end == otherNode)
+			{
+				return true;
+				break;
+			}
+			
+		}
 		return false;
 	}
 
