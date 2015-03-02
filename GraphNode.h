@@ -9,11 +9,13 @@ using namespace std;
 
 class GraphNode
 {
-
+	typedef std::vector<Edge> EdgeList;
 public:
 	int nodeNumber;
-	typedef std::vector<Edge> EdgeList;
+	
 	EdgeList edges;
+	bool visited;
+	int stepCount;
 
 	GraphNode(int num)
 	{

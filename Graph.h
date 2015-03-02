@@ -1,5 +1,6 @@
 #pragma once
 #include "GraphNode.h"
+#include <stack>
 class Graph
 {
 	typedef std::vector<GraphNode*> NodeList;
@@ -64,6 +65,84 @@ public:
 		}
 	}
 
+	void ResetVisited()
+	{
+		for (auto node : nodes){
+			node->visited = false;
+		}
+	}
+
+	bool SearchDFS(GraphNode* start, GraphNode* end)
+	{
+		ResetVisited();
+
+		std::stack<GraphNode*> nodeStack;
+		nodeStack.push(start);
+		while (!nodeStack.empty())
+		{
+			//the rest of the algorithm goes in here
+			GraphNode* current = nodeStack.top();
+			nodeStack.pop();
+			if (current->visited == true)
+			{
+				continue;
+			}
+
+			current->visited = true;
+
+			if (current == end)
+			{
+				return true;
+			}
+			for (int i = 0; i < current->edges.size(); ++i)
+			{
+				nodeStack.push(current->edges[i].end);
+			}
+		}
+
+		//return false if we didn't find a_pEnd
+		return false;
+	}
+
+	int HowManyLinksBetween(GraphNode* start, GraphNode* end)
+	{
+		start->stepCount = 0;
+
+		ResetVisited();
+
+		std::stack<GraphNode*> nodeStack;
+		nodeStack.push(start);
+		while (!nodeStack.empty())
+		{
+			//the rest of the algorithm goes in here
+			GraphNode* current = nodeStack.top();
+			nodeStack.pop();
+			if (current->visited == true)
+			{
+				continue;
+			}
+
+			current->visited = true;
+
+			if (current == end)
+			{
+				return end->stepCount;
+			}
+			for (int i = 0; i < current->edges.size(); ++i)
+			{
+				GraphNode* nextNode = current->edges[i].end;
+				if (!nextNode->visited)
+				{
+					nextNode->stepCount = current->stepCount + 1;
+					nodeStack.push(nextNode);
+				}
+			}
+		}
+
+		//return -1 if we cant find a path
+		return -1;
+	}
+
 	void ConnectNodes(GraphNode* nodeA, GraphNode* nodeB, float cost)
 	{
 		// this initializes the Edge struct with the start, end and cost.
@@ -75,7 +154,9 @@ public:
 
 		// the edge must be added to both nodes
 		nodeA->AddEdge(edge);
-		nodeB->AddEdge(edge);
+
+		// for now only store the edge on the start node.
+		//nodeB->AddEdge(edge);
 	}
 
 };
